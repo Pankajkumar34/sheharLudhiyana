@@ -9,11 +9,6 @@ import { useGetAllBusinesses } from "@/tanstack/business.tanstck";
 const Index = () => {
 const { data, isLoading, error } = useGetAllBusinesses();
 
-console.log({
-  data,
-  isLoading,
-  error,
-});
 const businesses = data?.data || [];
 console.log(businesses,"businessesbusinesses")
   return (

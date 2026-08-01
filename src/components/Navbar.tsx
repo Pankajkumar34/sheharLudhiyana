@@ -63,13 +63,13 @@ const Navbar = () => {
   };
 
   const handleLoginClick = () => {
-    localStorage.removeItem(REDIRECT_KEY);
+    localStorage.removeItem("s_accessToken");
     setMobileMenuOpen(false);
     navigate("/login");
   };
 
   const handleLogout = () => {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem("s_accessToken");
     localStorage.removeItem(REDIRECT_KEY);
     setCurrentUser(null);
     setDropdownOpen(false);

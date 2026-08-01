@@ -1,5 +1,6 @@
 import { useCategoryQuery, useCreateBusinessMutation, useDeleteFileMutation, useFileUploadMutation, useS3UploadMutation } from "@/tanstack/business.tanstck";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
@@ -127,7 +128,7 @@ export default function ListYourBusiness() {
   const { mutate: deleteFile, isPending: isDeleting } = useDeleteFileMutation();
   const { data: categoryResponse, isLoading: isCategoriesLoading, isError: isCategoryError } = useCategoryQuery();
   const { mutate: createBusiness, isPending: isBusinessLoading } = useCreateBusinessMutation();
-
+const navigate = useNavigate();
   const categories: Category[] = categoryResponse || [];
 
   const [formData, setFormData] = useState<BusinessFormData>(initialFormData);
@@ -283,6 +284,7 @@ export default function ListYourBusiness() {
     createBusiness(payload, {
       onSuccess: (res: ApiResponse) => {
         toast.success("created Successfully");
+        navigate("/profile");
         setFormData(initialFormData);
         setErrors({});
         setSubmitted(true);
